@@ -77,7 +77,7 @@ class KmeanClusterer:
                               centroid_function=self._centroid_function)
 
     def __init__(self, points: Collection[Vector],
-                 initial_centroids: Collection[NamedVector] = ("default", (0.0, 0.0)),
+                 initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)), ),
                  distance_function: Distance_Function = euclidean_distance,
                  centroid_function: Centroid_Function = simple_centroid):
         """
