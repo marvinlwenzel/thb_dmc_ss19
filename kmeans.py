@@ -111,6 +111,9 @@ class KmeanClusterer:
         :return: Dictionary of clusters. Keys are NamedVectors, Values are sets of Vectors. Empty
                         Clusters are contained as key with an empty Collection as value.
         """
+        if self._is_converged:
+            raise StopIteration
+
         old_clusters = copy.deepcopy(self._current_clusters)
 
         # Assign points to current cluster
@@ -131,13 +134,13 @@ class KmeanClusterer:
                 self._is_converged = False
                 break
 
-        # If we converged, this iteration calculated the same clustering as the one before.
+        # After calculating the new centroid, we see that we converged.
+        # However, we still want to show the previous solution, so we return the result of this iteration
+        # so that the next iteration shows the clustering with the final centroids
         # We do no want the same result twice, therefor we stop the iteration.
-        if self._is_converged:
-            raise StopIteration
-        else:
-            self._current_clusters = new_clusters
-            return result
+
+        self._current_clusters = new_clusters
+        return result
 
     def final_result(self) -> Dict[NamedVector, Collection[Vector]]:
         """
