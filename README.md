@@ -6,3 +6,5 @@ I do not guarantee that anything here is correct. I get practice coding this, yo
 or something to laugh at, who knows?
 
 The [Moodle Course](https://moodle.th-brandenburg.de/course/view.php?id=2137).
+
+Exercise 1: [Questions](https://moodle.th-brandenburg.de/mod/resource/view.php?id=100098) - [Solutions](https://moodle.th-brandenburg.de/mod/resource/view.php?id=103610)
