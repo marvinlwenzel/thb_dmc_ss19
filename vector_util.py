@@ -1,25 +1,17 @@
 """
 Contains basic definitions for data and function types.
 """
+import sys
 from typing import Tuple, Callable, Collection
-from collections import namedtuple
+
+if sys.version_info[0] < 3 or sys.version_info[1] < 6:
+    raise Exception("Must be using Python 3.6 or higher")
 
 Vector = Tuple[float, ...]
 NamedVector = Tuple[str, Vector]
 
 Distance_Function = Callable[[Vector, Vector], float]
 Centroid_Function = Callable[[Collection[Vector]], Vector]
-
-
-def abs(x: float):
-    """
-    :param x: a scalar
-    :return: The absolute of the scalar x
-    """
-    if x < 0:
-        return -x
-    else:
-        return x
 
 
 def pq_distance(x, y: Vector, q: int) -> float:

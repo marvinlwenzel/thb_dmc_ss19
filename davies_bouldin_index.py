@@ -7,8 +7,13 @@ A cluster separation measure. IEEE Trans. on Pattern Analysis and Machine Intell
 DOI: 10.1109/TPAMI.1979.4766909
 
 """
+import sys
 from typing import Collection
+
 from vector_util import Vector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
+
+if sys.version_info[0] < 3 or sys.version_info[1] < 6:
+    raise Exception("Must be using Python 3.6 or higher")
 
 
 def db_similarity(si, sj, mij: float) -> float:

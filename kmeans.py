@@ -2,9 +2,13 @@
 Module implementing the k-means algorithm for simple vectors.
 """
 import copy
+import sys
 from typing import Dict, Collection
 
 from vector_util import Vector, NamedVector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
+
+if sys.version_info[0] < 3 or sys.version_info[1] < 6:
+    raise Exception("Must be using Python 3.6 or higher")
 
 
 def assign_points_to_clusters(points: Collection[Vector],
@@ -77,7 +81,7 @@ class KmeanClusterer:
                               centroid_function=self._centroid_function)
 
     def __init__(self, points: Collection[Vector],
-                 initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)), ),
+                 initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)),),
                  distance_function: Distance_Function = euclidean_distance,
                  centroid_function: Centroid_Function = simple_centroid):
         """
