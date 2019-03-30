@@ -7,13 +7,9 @@ A cluster separation measure. IEEE Trans. on Pattern Analysis and Machine Intell
 DOI: 10.1109/TPAMI.1979.4766909
 
 """
-import sys
 from typing import Collection
 
 from vector_util import Vector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
-
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    raise Exception("Must be using Python 3.6 or higher")
 
 
 def db_similarity(si, sj, mij: float) -> float:
@@ -26,7 +22,7 @@ def db_similarity(si, sj, mij: float) -> float:
     :param si: Dispersion measure of the cluster i
     :param sj: Dispersion measure of the cluster j
     :param mij: Distance between the centroids representing the clusters i and j
-    :return: A positive float. Measure of similarity.
+    :return: Positive float. Relative measure of similarity - larger number, more similar.
     """
     return (si + sj) / mij
 
@@ -73,7 +69,7 @@ def davies_bouldin_index(clusters: Collection[Collection[Vector]],
     :param dispersion_distance_func: Function used to calculate the distance for the dispersion.
     :param cluster_distance_func: Function used to calculate the distance between two cluster centroids.
     :param q: exponent q of the dispersion function.
-    :return:
+    :return: A positive float. Measure of similarity.
     """
     cluster_list = list(clusters)
     max_similarity_sum = 0

@@ -1,11 +1,6 @@
-import sys
+from hamcrest import assert_that, equal_to, not_
 
-from hamcrest import *
-
-from kmeans import KmeanClusterer
-
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    raise Exception("Must be using Python 3.6 or higher")
+from dmc import KmeanClusterer, kmeans
 
 
 def test_kmeans_final_ueb_1_2_c():
@@ -23,8 +18,7 @@ def test_kmeans_final_1():
     start = (("M1", (4,)), ("M2", (11,)))
 
     solution = {('M1', (7.0,)): {(2,), (3,), (4,), (10,), (11,), (12,)}, ('M2', (25.0,)): {(30,), (25,), (20,)}}
-    clusterer = KmeanClusterer(scalars, start)
-    result = clusterer.final_result()
+    result = kmeans(scalars, start)
     assert_that(result, equal_to(solution))
 
 

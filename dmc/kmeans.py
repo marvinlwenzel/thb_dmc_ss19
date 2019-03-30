@@ -2,13 +2,33 @@
 Module implementing the k-means algorithm for simple vectors.
 """
 import copy
-import sys
 from typing import Dict, Collection
 
-from vector_util import Vector, NamedVector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
+from vector_util import Vector, NamedVector, Distance_Function, euclidean_distance, simple_centroid, \
+    Centroid_Function
 
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    raise Exception("Must be using Python 3.6 or higher")
+
+def kmean_clusterize(points: Collection[Vector],
+                     initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)),),
+                     distance_function: Distance_Function = euclidean_distance,
+                     centroid_function: Centroid_Function = simple_centroid) -> Dict[NamedVector, Collection[Vector]]:
+    """
+    Applies the k-means algorithm to the given cluster and returns the final clustering.
+
+    :param points: Collection of points that shall be clustered
+    :param initial_centroids: Collection of initial centroids, also implicitly stating the k of k-means
+    :param distance_function: Function to calculate the distance between vectors.
+                        Defaults to the euclidean distance.
+    :param centroid_function: Function to calculate a centroid of a set of vectors.
+                        Defaults to the simple centroid function.
+    :return: Dictionary of clusters. Keys are NamedVectors, Values are sets of Vectors. Empty
+                        Clusters are contained as key with an empty Collection as value.
+
+    """
+    return KmeanClusterer(points=points,
+                          initial_centroids=initial_centroids,
+                          distance_function=distance_function,
+                          centroid_function=centroid_function).final_result()
 
 
 def assign_points_to_clusters(points: Collection[Vector],
@@ -30,7 +50,7 @@ def assign_points_to_clusters(points: Collection[Vector],
     :param centroids: Centroid used for clustering
     :param distance_function: Function used to calculate the distance between a point and
                         centroid
-    :return:
+    :return: Positive float - relative measure of quality of a clustering, lower is better
     """
     result = {}
     distance = distance_function

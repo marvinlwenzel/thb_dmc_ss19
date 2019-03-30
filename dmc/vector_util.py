@@ -1,11 +1,7 @@
 """
 Contains basic definitions for data and function types.
 """
-import sys
 from typing import Tuple, Callable, Collection
-
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    raise Exception("Must be using Python 3.6 or higher")
 
 Vector = Tuple[float, ...]
 NamedVector = Tuple[str, Vector]

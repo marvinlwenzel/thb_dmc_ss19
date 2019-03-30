@@ -1,11 +1,6 @@
-import sys
+from hamcrest import assert_that, close_to
 
-from hamcrest import *
-
-from davies_bouldin_index import davies_bouldin_index
-
-if sys.version_info[0] < 3 or sys.version_info[1] < 6:
-    raise Exception("Must be using Python 3.6 or higher")
+from dmc import davies_bouldin_index
 
 
 def test_dbi_final():
