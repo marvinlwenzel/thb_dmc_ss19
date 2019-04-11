@@ -1,6 +1,6 @@
 from hamcrest import assert_that, close_to
 
-from dmc import davies_bouldin_index
+from thb_dmc.davies_bouldin_index import davies_bouldin_index
 
 
 def test_dbi_final():

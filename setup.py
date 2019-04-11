@@ -1,10 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='dmc',
+    name='thb_dmc',
     version='0.1',
-    packages=['dmc'],
-    package_dir={'': 'dmc'},
+    packages=['thb_dmc'],
     install_requires=[],
     url='https://github.com/marvinlwenzel/thb_dmc_ss19',
     license='MIT',

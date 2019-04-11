@@ -1,6 +1,6 @@
 from hamcrest import assert_that, equal_to, not_
 
-from dmc import KmeanClusterer, kmeans
+from thb_dmc.kmeans import KmeanClusterer, kmeans
 
 
 def test_kmeans_final_ueb_1_2_c():

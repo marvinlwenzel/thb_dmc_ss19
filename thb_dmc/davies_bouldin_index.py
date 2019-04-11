@@ -9,7 +9,7 @@ DOI: 10.1109/TPAMI.1979.4766909
 """
 from typing import Collection
 
-from vector_util import Vector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
+from thb_dmc.vector_util import Vector, Distance_Function, euclidean_distance, simple_centroid, Centroid_Function
 
 
 def db_similarity(si, sj, mij: float) -> float:

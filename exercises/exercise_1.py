@@ -1,4 +1,4 @@
-from dmc import KmeanClusterer, davies_bouldin_index
+from thb_dmc import KmeanClusterer, davies_bouldin_index
 
 if __name__ == '__main__':
     POINTS = ((1, 3), (3, 3), (3, 4), (4, 2), (5, 2), (5, 8), (8, 3), (8, 7))

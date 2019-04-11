@@ -4,14 +4,14 @@ Module implementing the k-means algorithm for simple vectors.
 import copy
 from typing import Dict, Collection
 
-from vector_util import Vector, NamedVector, Distance_Function, euclidean_distance, simple_centroid, \
+from thb_dmc.vector_util import Vector, NamedVector, Distance_Function, euclidean_distance, simple_centroid, \
     Centroid_Function
 
 
-def kmean_clusterize(points: Collection[Vector],
-                     initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)),),
-                     distance_function: Distance_Function = euclidean_distance,
-                     centroid_function: Centroid_Function = simple_centroid) -> Dict[NamedVector, Collection[Vector]]:
+def kmeans(points: Collection[Vector],
+           initial_centroids: Collection[NamedVector] = (("default", (0.0, 0.0)),),
+           distance_function: Distance_Function = euclidean_distance,
+           centroid_function: Centroid_Function = simple_centroid) -> Dict[NamedVector, Collection[Vector]]:
     """
     Applies the k-means algorithm to the given cluster and returns the final clustering.
 
