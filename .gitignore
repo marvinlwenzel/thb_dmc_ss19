@@ -1,0 +1,8 @@
+build/
+data/
+dist/
+.idea/
+*.egg-info/
+venv/
+thb_dmc/__pycache__/
+__pycache__
